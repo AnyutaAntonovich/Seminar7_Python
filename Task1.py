@@ -7,20 +7,28 @@
 #Ввод: пара-ра-рам рам-пам-папам па-ра-па-дам
 #Вывод: Парам пам-пам
 
-def rhythm(str):
-    str = str.split()
-    list = []
-    for word in str:
-        result = 0
-        for i in word:
-            if i in 'аеёиоуыэюя':
-                result += 1
-        list.append(result)
-    return len(list) == list.count(list[0])
+# Моё решение
 
-print('Введите: пара-ра-рам рам-пам-папам па-ра-па-дам')
-str = input()
-if rhythm(str):
+song = input('Input the song: ').lower().split()
+def song_rhythm(song):
+    list_ = []
+    for word in song:
+        result = 0
+        for letter in word:
+            if letter in 'аеёиоуыэюя':
+                result += 1
+        list_.append(result)
+    return len(list_) == list_.count(list_[0])
+
+if song_rhythm(song):
     print('Парам пам-пам')
 else:
     print('Пам парам')
+
+
+# Решение как на разборе, но немного по своему :)
+
+# song = input('Input the song: ').lower().split()
+# counts = list(map(lambda word: [letter for letter in word if letter in 'аеёиоуыэюя'], song))
+# result = set(map(len, counts))
+# print('Парам пам-пам' if len(result) == 1 else 'Пам парам')
